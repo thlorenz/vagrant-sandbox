@@ -16,4 +16,4 @@ export HOME=`pwd`
 (cd ./dotfiles && git submodule update --init)
 
 # start our node app
-(cd /vagrant && npm start)
+# (cd /vagrant && npm start)
