@@ -1,0 +1,10 @@
+{
+  "name": "vagrant-app",
+  "version": "0.0.0",
+  "description": "The server running inside the vagrant VM",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app"
+  },
+  "license": "MIT"
+}
