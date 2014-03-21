@@ -1,7 +1,14 @@
 #! /usr/bin/env bash
 
 apt-get update
-apt-get install -y nodejs npm git vim
+
+# make sure we get a good nodejs version
+apt-get install -y python-software-properties python g++ make
+add-apt-repository ppa:chris-lea/node.js
+apt-get update
+apt-get install nodejs
+
+apt-get install -y git vim
 
 git clone https://github.com/thlorenz/dotfiles.git
 chown -R vagrant:vagrant dotfiles
