@@ -7,7 +7,8 @@ Playing with vagrant -- that's all.
     
     git checkout package
 
-    vagrant box add hashicorp/precise32
+    # optional - will be added automatically when we do 'vagrant up'
+    vagrant box add hashicorp/precise32 
 
     # stand up our initial box and get all our things installed
     vagrant up
