@@ -29,6 +29,9 @@ export HOME=`pwd`
 
 # docker
 
+## https://github.com/dotcloud/docker/issues/4568#issuecomment-37259489 
+apt-get install cgroup-lite
+
 ## upgrade linux kernel to support aufs
 apt-get install -y linux-image-generic-lts-raring linux-headers-generic-lts-raring
 
