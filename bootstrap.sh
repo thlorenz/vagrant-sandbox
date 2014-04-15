@@ -8,7 +8,25 @@ add-apt-repository ppa:chris-lea/node.js
 apt-get update
 apt-get install -y nodejs
 
-apt-get install -y git vim
+apt-get install -y clang
+
+# setup nodejs and npm
+mkdir npm-global
+npm config set prefix ./npm-global
+
+# vim and related tooling
+
+## I know this is huge, but I want python support for my cute little plugins damnit!
+apt-get install -y git vim-gnome
+
+## clang-complete support
+apt-get install -y exuberant-ctags libclang-dev
+
+## syntastic support for javascript
+npm install -g jshint
+
+# utils
+apt-get install -y python-pygments
 
 git clone https://github.com/thlorenz/dotfiles.git
 chown -R vagrant:vagrant dotfiles
@@ -21,11 +39,9 @@ rm -f .bashrc .profile
 export HOME=`pwd`
 
 ./dotfiles/scripts/create-links.sh
+cp -R ./dotfiles/fonts /usr/share/
 
-( cd ./dotfiles &&               \
-  git submodule update --init && \
-  rm -rf vim/bundle/powerline && \
-  git clone https://github.com/bling/vim-airline.git vim/bundle/airline)
+(cd ./dotfiles &&  git submodule update --init)
 
 # docker
 
@@ -42,6 +58,3 @@ echo 'apt-get update'                                                           
 echo 'apt-get install -y lxc-docker'                                                                    >> ./install-docker.sh
 
 echo "rebooting to activate new linux kernel please run 'sudo sh ./install-docker.sh' after logging in again"
-
-# start our node app
-# (cd /vagrant && npm start)
