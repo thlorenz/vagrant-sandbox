@@ -10,6 +10,9 @@ apt-get install -y nodejs
 
 apt-get install -y clang
 
+# C tooling - needed already just to install things like silver_searcher from source
+apt-get install -y automake pkg-config libpcre3-dev zlib1g-dev liblzma-dev
+
 # setup nodejs and npm
 mkdir npm-global
 npm config set prefix ./npm-global
@@ -26,8 +29,16 @@ apt-get install -y exuberant-ctags libclang-dev
 npm install -g jshint
 
 # utils
+
+## cat files syntax highlighted via `c` command
 apt-get install -y python-pygments
 
+## silver_searcher from source
+git clone https://github.com/ggreer/the_silver_searcher.git
+(cd the_silver_searcher && ./build.sh && make install)
+rm -rf the_silver_searcher
+
+# my dotfile setup
 git clone https://github.com/thlorenz/dotfiles.git
 chown -R vagrant:vagrant dotfiles
 
